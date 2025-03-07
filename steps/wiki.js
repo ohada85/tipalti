@@ -1,5 +1,5 @@
 const {When, Then} = require('cucumber');
-const MainWiki = require('../pages/wikipedia/wiki-main-page');
+const MainWiki = require('../pages/wikipedia/main-page');
 const ArticlePage = require('../pages/wikipedia/wiki-article-page');
 require('chai').should();
 
