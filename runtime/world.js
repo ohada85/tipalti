@@ -1,9 +1,8 @@
-const { setWorldConstructor, setDefaultTimeout, After, Before, Status } =  require('cucumber');
-// const { setWorldConstructor, setDefaultTimeout, After, Status } =  require('cucumber');
-const {context, set} = require('./context');
-const browser = require('./browser');
-const humanizeDuration = require("humanize-duration");
-const chalk = require('chalk');
+import { setWorldConstructor, setDefaultTimeout, After, Before, Status } from 'cucumber';
+import { context, set } from './context.js';
+import { takeScreenshot, destroy } from './browser.js';
+import humanizeDuration from "humanize-duration";
+import chalk from 'chalk';
 
 
 function CustomWorld({ attach, parameters }) {
@@ -16,7 +15,7 @@ function extractFeatureName(uri) {
     return uri.split('/').pop().split('.')[0]
 }
 function scenarioFullName(scenario) {
-    return `${chalk.cyanBright(extractFeatureName(scenario.sourceLocation.uri))}: ${chalk.magentaBright(scenario.pickle.name)}`
+    return `${chalk.green(extractFeatureName(scenario.sourceLocation.uri))}: ${chalk.magentaBright(scenario.pickle.name)}`
 }
 function scenarioResult(result) {
     return `${scenarioStatus(result.status)} ${chalk.yellow(humanizeDuration(result.duration/1000000))}`;
@@ -32,7 +31,7 @@ Before(async function (scenario) {
 
     context.current_scenario = scenario.pickle.id;
 
-    console.log(`${scenarioFullName(scenario)} ${chalk.cyanBright("started")}`);
+    console.log(`${scenarioFullName(scenario)} ${chalk.green("started")}`);
 });
 
 After(async function (scenario) {
@@ -40,13 +39,13 @@ After(async function (scenario) {
     console.log(` ${scenarioFullName(scenario)} ended in -  ${scenarioResult(scenario.result)}`);
 
     if (scenario.result.status === Status.FAILED) {
-        const screenshot = await browser.takeScreenshot();
+        const screenshot = await takeScreenshot();
         if (screenshot)
             this.attach(screenshot, 'image/png');
     }
 
     // Teardown browser
-    await browser.destroy()
+    await destroy()
 });
 
 setWorldConstructor(CustomWorld);

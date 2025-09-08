@@ -1,5 +1,5 @@
-const Page = require('../Page');
-const {By, until} = require('selenium-webdriver');
+import Page from '../Page.js';
+import { By, until } from 'selenium-webdriver';
 
 class ArticlePage extends Page {
   constructor() {
@@ -26,4 +26,4 @@ class ArticlePage extends Page {
 
 }
 
-module.exports = ArticlePage;
+export default ArticlePage;

@@ -1,4 +1,4 @@
-const reporter = require('cucumber-html-reporter');
+import { generate as __generate } from 'cucumber-html-reporter';
 
 const options = {
     theme: 'hierarchy',
@@ -11,8 +11,10 @@ const options = {
 };
 
 function generate() {
-    reporter.generate(options)
+    __generate(options)
 }
 
-exports.generate = generate
+export {
+  generate
+};
 

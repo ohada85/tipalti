@@ -11,7 +11,9 @@ function set(other) {
     context.headless = other.headless;
 }
 
-exports.set = set;
-exports.context = context;
+export {
+  context,
+  set,
+};
 
 

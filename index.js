@@ -1,7 +1,7 @@
-const {program} = require('commander');
-const {Cli} = require('cucumber');
-const VError = require('verror');
-const chalk = require('chalk');
+import { program } from 'commander';
+import { Cli } from 'cucumber';
+import VError from 'verror';
+import chalk from 'chalk';
 
 function exitWithError(error) {
   console.error(VError.fullStack(error)) // eslint-disable-line no-console
@@ -10,7 +10,7 @@ function exitWithError(error) {
 
 function main() {
   parse_arguments();
-  console.log(`${chalk.cyanBright('running test')} `);
+  console.log(`${chalk.green('running test')} `);
   run_cucumber(build_cucumber_args())
 }
 
@@ -29,8 +29,9 @@ async function run_cucumber(args) {
     exitWithError(error)
   }
 
-  require('./runtime/reporter').generate();
-
+  const reporter = await import('./runtime/reporter.js');
+  reporter.generate();
+  
   const exitCode = result.success ? 0: 1;
   if (result.shouldExitImmediately) {
     process.exit(exitCode)

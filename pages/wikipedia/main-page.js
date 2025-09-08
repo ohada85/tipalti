@@ -1,5 +1,5 @@
-const Page = require('../Page');
-const {By, until} = require('selenium-webdriver');
+import Page from '../Page.js';
+import { By, until } from 'selenium-webdriver';
 
 class MainWiki extends Page {
   constructor() {
@@ -41,4 +41,4 @@ class MainWiki extends Page {
 
 }
 
-module.exports = MainWiki;
+export default MainWiki;

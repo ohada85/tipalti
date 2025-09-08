@@ -1,6 +1,6 @@
-const {context} = require('../runtime/context');
-const {By, until, Key} = require('selenium-webdriver');
-const {browser} = require('../runtime/browser');
+import { context } from '../runtime/context.js';
+import { By, until, Key } from 'selenium-webdriver';
+import { browser } from '../runtime/browser.js';
 
 class Page {
     /**
@@ -341,4 +341,4 @@ class Page {
 
 }
 
-module.exports = Page;
+export default Page;

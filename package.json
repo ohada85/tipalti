@@ -1,5 +1,6 @@
 {
   "name": "automation-js",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -16,7 +17,7 @@
     "axios": "^0.19.2",
     "chai": "^4.2.0",
     "chalk": "^4.1.0",
-    "chromedriver": "^133.0.0",
+    "chromedriver": "^140.0.4",
     "commander": "^6.0.0",
     "cucumber": "^6.0.5",
     "cucumber-html-reporter": "^5.2.0",

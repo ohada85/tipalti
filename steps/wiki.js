@@ -1,7 +1,7 @@
-const {When, Then} = require('cucumber');
-const MainWiki = require('../pages/wikipedia/main-page');
-const ArticlePage = require('../pages/wikipedia/wiki-article-page');
-require('chai').should();
+import { When, Then } from 'cucumber';
+import MainWiki from '../pages/wikipedia/main-page.js';
+import ArticlePage from '../pages/wikipedia/wiki-article-page.js';
+import chai from 'chai'; chai.should();
 
 
 When(/^user search wikipedia for "(.*)"$/, async function (articleName) {

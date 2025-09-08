@@ -1,6 +1,6 @@
-const selenium = require('selenium-webdriver')
-const chromedriver = require('chromedriver');
-const context = require("./context");
+import selenium from 'selenium-webdriver';
+import chromedriver from 'chromedriver';
+import {context} from './context.js';
 
 let driver = null
 
@@ -40,6 +40,8 @@ async function destroy() {
     }
 }
 
-exports.destroy = destroy
-exports.takeScreenshot = takeScreenshot
-exports.browser = browser
+export {
+  destroy,
+  takeScreenshot,
+  browser,
+};
