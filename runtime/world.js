@@ -1,5 +1,5 @@
 import { setWorldConstructor, setDefaultTimeout, After, Before, Status } from 'cucumber';
-import { context, set } from './context.js';
+import { context, set, setScenarioContextDefaults} from './context.js';
 import { takeScreenshot, destroy } from './browser.js';
 import humanizeDuration from "humanize-duration";
 import chalk from 'chalk';
@@ -32,6 +32,7 @@ Before(async function (scenario) {
     context.current_scenario = scenario.pickle.id;
 
     console.log(`${scenarioFullName(scenario)} ${chalk.green("started")}`);
+    setScenarioContextDefaults();
 });
 
 After(async function (scenario) {
