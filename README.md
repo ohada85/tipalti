@@ -1,5 +1,4 @@
-# cuculoco
-Automatic End-to-End tests in Javascript  
+# Automatic End-to-End tests in Javascript  
 
 - [Features](#features)
 - [Installing](#installing)
